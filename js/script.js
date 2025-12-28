@@ -182,3 +182,43 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+// Add these functions to the end of your existing script.js file
+
+function redirectToInstagram(event) {
+  event.stopPropagation();
+
+  // Instagram username (replace with your actual Instagram username)
+  const instagramUsername = "glowsy_beaute";
+
+  // Pre-filled message in French
+  const message = encodeURIComponent(
+    "Bonjour! Je suis intéressé(e) par vos nouveaux produits. 🌟"
+  );
+
+  // Instagram DM URL
+  const instagramURL = `https://ig.me/m/${instagramUsername}`;
+
+  // Open Instagram DM in new tab
+  window.open(instagramURL, "_blank");
+
+  // Optional: Show feedback that link was opened
+  const copyBtn = document.getElementById("copyBtn");
+  copyBtn.textContent = "Ouvert!";
+  copyBtn.style.background = "rgba(0, 200, 100, 0.8)";
+
+  setTimeout(() => {
+    copyBtn.textContent = "Message";
+    copyBtn.style.background = "rgba(148, 59, 60, 0.8)";
+  }, 2000);
+}
+
+// Close promotional banner
+function closePromoBanner(event) {
+  event.stopPropagation();
+  const banner = document.getElementById("promoBanner");
+  banner.classList.add("hidden");
+
+  setTimeout(() => {
+    banner.style.display = "none";
+  }, 300);
+}

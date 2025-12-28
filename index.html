@@ -3,12 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Glowsy Beauty - Skincare and Beauty</title>
+    <title>Glowsy Beauty ✽ Skincare and Beauty</title>
     <link rel="stylesheet" href="css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      const favicon =
+        document.querySelector("link[rel~='icon']") ||
+        document.createElement("link");
+      favicon.rel = "icon";
+      favicon.href =
+        "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌸</text></svg>";
+      document.head.appendChild(favicon);
+    </script>
+
     <script src="js/script.js" defer></script>
   </head>
   <body>
@@ -178,6 +192,23 @@
             </a>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Promotional Banner -->
+    <div class="promo-banner" id="promoBanner">
+      <div class="promo-close-btn" onclick="closePromoBanner(event)"></div>
+      <div class="promo-header">
+        <div class="promo-icon">✨</div>
+        <div class="promo-title">Offres Spéciales à Venir!</div>
+      </div>
+      <div class="promo-description">
+        Nouveaux produits en approche exclusive!<br />
+        Restez connectés pour des soins révolutionnaires.
+      </div>
+      <div class="promo-code-section" onclick="redirectToInstagram(event)">
+        <div class="promo-code">DM-nous pour découvrir</div>
+        <button class="promo-copy-btn" id="copyBtn">Discuter</button>
       </div>
     </div>
 
