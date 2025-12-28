@@ -3,6 +3,39 @@ document.addEventListener("DOMContentLoaded", function () {
   const galleryGrid = document.querySelector(".gallery-grid");
   const galleryContainer = document.querySelector(".gallery-container");
 
+  // Love burst effect on page load
+  function createLoveBurst() {
+    const centerX = window.innerWidth / 2;
+    const centerY = window.innerHeight / 2;
+    const numberOfHearts = 15;
+
+    for (let i = 0; i < numberOfHearts; i++) {
+      setTimeout(() => {
+        const heart = document.createElement("div");
+        heart.className = "love-burst";
+        heart.innerHTML = "❤️";
+
+        const angle = (Math.PI * 2 * i) / numberOfHearts;
+        const distance = 50 + Math.random() * 100;
+        const startX = centerX + Math.cos(angle) * distance;
+        const startY = centerY + Math.sin(angle) * distance;
+
+        heart.style.left = startX + "px";
+        heart.style.top = startY + "px";
+        heart.style.fontSize = 20 + Math.random() * 20 + "px";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 2000);
+      }, i * 100);
+    }
+  }
+
+  // Trigger love burst on page load
+  setTimeout(createLoveBurst, 500);
+
   // Staggered reveal animation on load (first 6 items only)
   gridItems.forEach((item, index) => {
     if (index < 6) {
@@ -134,4 +167,18 @@ document.addEventListener("DOMContentLoaded", function () {
       particle.remove();
     }, 1000);
   }
+
+  // Cursor tracking for hover buttons
+  gridItems.forEach((item) => {
+    const button = item.querySelector(".hover-button");
+
+    item.addEventListener("mousemove", (e) => {
+      const rect = item.getBoundingClientRect();
+      const x = e.clientX - rect.left + 10; // Reduced offset to the right
+      const y = e.clientY - rect.top - 20; // Reduced offset above cursor
+
+      button.style.left = x + "px";
+      button.style.top = y + "px";
+    });
+  });
 });
